@@ -1,11 +1,4 @@
-import {
-  Button,
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import { MEALS } from "../data/dummy-data";
 import MealDetail from "../components/MealDetail/MealDetail";
 import Subtitle from "../components/MealDetail/Subtitle";
@@ -16,7 +9,6 @@ import { FavoriteContext } from "../store/context/favorite-context";
 
 function MealDetailScreen({ route, navigation }) {
   const favoriteMealContext = useContext(FavoriteContext);
-  console.log(favoriteMealContext);
 
   const mealId = route.params.mealId;
 
@@ -44,7 +36,7 @@ function MealDetailScreen({ route, navigation }) {
         );
       },
     });
-  }, []);
+  }, [navigation, changeFavoriteStatusHandler]);
   return (
     <ScrollView style={styles.rootContainer}>
       <Image source={{ uri: selectedMeal.imageUrl }} style={styles.image} />
